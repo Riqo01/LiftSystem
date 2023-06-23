@@ -161,10 +161,10 @@ public class Program
                     {
                         if (lifts.Sum(c => liftCapacity - c.PassengerCount) >= peopleCount)
                         {
-
+                            bool temp = true;
                             while (true)
                             {
-                                Console.WriteLine("No lift has that capacity. Enter 1 for auto-ordering of separate lifts, 2 to order manually");
+                                Console.WriteLine("You cannot all travel in the same lift. Enter 1 to auto-schedule different lifts, or 2 to do it manually");
                                 var separateLiftInput = Console.ReadLine();
 
                                 if (!int.TryParse(separateLiftInput, out int separateLift))
@@ -186,8 +186,9 @@ public class Program
                                 }
                                 else if (separateLift == 2)
                                 {
-                                    Console.WriteLine("Invalid Input");
-                                    continue;
+                                    Console.WriteLine("Try to put a lesser number of people");
+                                    temp = false;
+                                    break;
                                 }
                                 else
                                 {
@@ -195,11 +196,15 @@ public class Program
                                     continue;
                                 }
                             }
+                            if (!temp)
+                            {
+                                continue;
+                            }
 
                         }
                         else
                         {
-                            Console.WriteLine("Total capacity in all the lifts cannot handle that number");
+                            Console.WriteLine("Total capacity in all the lifts cannot handle that number at the moment");
                         }
                     }
                     else
