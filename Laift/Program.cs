@@ -348,7 +348,9 @@ public class LiftService
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"X"); Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($" : Lift Booked to full capacity");
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write($"X"); Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($" : Lift In Motion");
+        Console.Write($"X"); Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($" : Lift Moving Upwards");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.Write($"X"); Console.ForegroundColor = ConsoleColor.White; Console.WriteLine($" : Lift Moving Downwards");
         Console.WriteLine($"X : Lift Idle");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"N");
@@ -449,9 +451,13 @@ public class LiftService
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                     }
-                    else if (lift.IsMovingUp != null)
+                    else if (lift.IsMovingUp == true)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (lift.IsMovingUp == false)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                     }
 
                     Console.Write(" X ");
